@@ -1145,6 +1145,28 @@ img {
     opacity: 0.9;
 }
 
+/* =========================================================
+   Share Assessment
+   ========================================================= */
+
+.share-feedback {
+    margin-top: 24px;
+    padding: 13px 15px;
+
+    background: #edf8f1;
+    color: #185c37;
+
+    border: 1px solid #91c8a7;
+    border-radius: var(--radius-small);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.detail-actions {
+    flex-wrap: wrap;
+}
+
 
 /* =========================================================
    Utility

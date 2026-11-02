@@ -48,6 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
             "editAssessmentLink"
         );
 
+    const shareButton =
+        document.getElementById(
+            "shareAssessment"
+        );
+
+    const shareFeedback =
+        document.getElementById(
+            "shareFeedback"
+        );
+
 
     /* -----------------------------------------------------
        Read assessment ID from URL
@@ -159,6 +169,105 @@ document.addEventListener("DOMContentLoaded", () => {
         details.hidden = true;
         notFound.hidden = false;
     }
+
+    /* -----------------------------------------------------
+   Share Assessment
+   ----------------------------------------------------- */
+
+function buildShareText() {
+    if (!assessmentId) {
+        return "";
+    }
+
+    const assessment =
+        StudyTrackStorage.getAssessmentById(
+            assessmentId
+        );
+
+    if (!assessment) {
+        return "";
+    }
+
+    return [
+        "StudyTrack Assessment",
+        "",
+        `${assessment.module} - ${assessment.title}`,
+        `Due: ${formatDate(assessment.dueDate)}`,
+        `Status: ${assessment.status}`
+    ].join("\n");
+}
+
+
+function showShareFeedback(message) {
+    shareFeedback.textContent = message;
+    shareFeedback.hidden = false;
+
+    window.setTimeout(() => {
+        shareFeedback.hidden = true;
+    }, 10000);
+}
+
+
+async function shareAssessment() {
+    const shareText =
+        buildShareText();
+
+    if (!shareText) {
+        showShareFeedback(
+            "Assessment details could not be shared."
+        );
+
+        return;
+    }
+
+    /*
+     * Use the device's native share interface
+     * when available.
+     */
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: "StudyTrack Assessment",
+                text: shareText
+            });
+
+            showShareFeedback(
+                "Assessment shared successfully."
+            );
+
+            return;
+        } catch (error) {
+            if (error.name === "AbortError") {
+                return;
+            }
+        }
+    }
+
+
+    /*
+     * Desktop fallback:
+     * copy assessment details to clipboard.
+     */
+    try {
+        await navigator.clipboard.writeText(
+            shareText
+        );
+
+        showShareFeedback(
+            "Assessment details copied to clipboard."
+        );
+    } catch {
+        showShareFeedback(
+            "Sharing is not available in this browser."
+        );
+    }
+}
+
+
+shareButton.addEventListener(
+    "click",
+    shareAssessment
+);
 
 
     loadAssessment();
