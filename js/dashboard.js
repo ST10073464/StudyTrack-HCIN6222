@@ -543,11 +543,29 @@ document.addEventListener("DOMContentLoaded", () => {
     /* -----------------------------------------------------
        Initialise Dashboard
        ----------------------------------------------------- */
-
     const assessments =
         StudyTrackStorage.getAssessments();
 
     populateModuleFilter(assessments);
 
     renderDashboard();
+
+
+    /* -----------------------------------------------------
+    Display message from previous page
+    ----------------------------------------------------- */
+
+    const storedMessage =
+        sessionStorage.getItem(
+            "studytrack_message"
+        );
+
+    if (storedMessage) {
+        showSystemMessage(storedMessage);
+
+        sessionStorage.removeItem(
+            "studytrack_message"
+        );
+    }
+    
 });

@@ -711,6 +711,217 @@ img {
     font-size: 13px;
 }
 
+/* =========================================================
+   Back Link
+   ========================================================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 24px;
+
+    color: var(--primary-dark);
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   Assessment Form
+   ========================================================= */
+
+.form-container {
+    max-width: 760px !important;
+
+    padding: 30px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-small);
+}
+
+.required-note {
+    margin: 0 0 26px;
+
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.required {
+    color: var(--danger);
+    font-weight: 800;
+}
+
+.optional {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   Form Groups
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background: var(--surface);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-small);
+}
+
+.form-group input,
+.form-group select {
+    min-height: 44px;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #aab7c2;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #8b97a2;
+}
+
+
+/* =========================================================
+   Two-column Form Row
+   ========================================================= */
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+/* =========================================================
+   Form Help
+   ========================================================= */
+
+.field-help {
+    margin: 6px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   Validation
+   ========================================================= */
+
+.error-summary {
+    max-width: 760px !important;
+
+    margin-bottom: 22px !important;
+    padding: 16px 18px;
+
+    background: var(--danger-background);
+    color: #762929;
+
+    border: 1px solid #d99a9a;
+    border-left: 4px solid var(--danger);
+    border-radius: var(--radius-small);
+
+    font-size: 13px;
+}
+
+.error-summary strong {
+    display: block;
+}
+
+.error-summary ul {
+    margin: 10px 0 0;
+    padding-left: 20px;
+}
+
+.error-summary li {
+    margin-top: 4px;
+}
+
+.field-error {
+    margin: 6px 0 0;
+
+    color: var(--danger);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error {
+    border: 2px solid var(--danger);
+
+    background: #fffafa;
+}
+
+
+/* =========================================================
+   Form Actions
+   ========================================================= */
+
+.form-actions {
+    margin-top: 30px;
+    padding-top: 22px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    border-top: 1px solid var(--border);
+}
+
 
 /* =========================================================
    Utility

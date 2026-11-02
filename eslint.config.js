@@ -29,6 +29,7 @@ module.exports = [
     {
         files: [
             "js/dashboard.js",
+            "js/add-assessment.js",
             "js/app.js"
         ],
 
