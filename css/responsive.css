@@ -78,6 +78,35 @@
     .error-summary {
         font-size: 12px;
     }
+        /* -----------------------------------------------------
+       Assessment Details
+       ----------------------------------------------------- */
+
+    .detail-card {
+        padding: 22px 18px;
+    }
+
+    .detail-header {
+        flex-direction: column;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+        /* -----------------------------------------------------
+       Delete Confirmation
+       ----------------------------------------------------- */
+
+    .delete-confirmation {
+        flex-direction: column;
+
+        padding: 22px 18px;
+    }
+
+    .delete-summary {
+        grid-template-columns: 1fr;
+    }
 
 
     /* -----------------------------------------------------

@@ -1,0 +1,165 @@
+"use strict";
+
+/* =========================================================
+   StudyTrack
+   View Assessment
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loading =
+        document.getElementById("assessmentLoading");
+
+    const notFound =
+        document.getElementById("assessmentNotFound");
+
+    const details =
+        document.getElementById("assessmentDetails");
+
+    const moduleElement =
+        document.getElementById("detailModule");
+
+    const titleElement =
+        document.getElementById("detailTitle");
+
+    const statusBadge =
+        document.getElementById("detailStatus");
+
+    const typeElement =
+        document.getElementById("detailType");
+
+    const dueDateElement =
+        document.getElementById("detailDueDate");
+
+    const expectedMarkElement =
+        document.getElementById(
+            "detailExpectedMark"
+        );
+
+    const statusTextElement =
+        document.getElementById(
+            "detailStatusText"
+        );
+
+    const notesElement =
+        document.getElementById("detailNotes");
+
+    const editLink =
+        document.getElementById(
+            "editAssessmentLink"
+        );
+
+
+    /* -----------------------------------------------------
+       Read assessment ID from URL
+       ----------------------------------------------------- */
+
+    const parameters =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const assessmentId =
+        parameters.get("id");
+
+
+    /* -----------------------------------------------------
+       Helpers
+       ----------------------------------------------------- */
+
+    function parseDate(dateString) {
+        return new Date(`${dateString}T00:00:00`);
+    }
+
+
+    function formatDate(dateString) {
+        return new Intl.DateTimeFormat(
+            "en-ZA",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        ).format(parseDate(dateString));
+    }
+
+
+    function getStatusClass(status) {
+        return status
+            .toLowerCase()
+            .replace(/\s+/g, "-");
+    }
+
+
+    /* -----------------------------------------------------
+       Load assessment
+       ----------------------------------------------------- */
+
+    function loadAssessment() {
+        if (!assessmentId) {
+            showNotFound();
+            return;
+        }
+
+        const assessment =
+            StudyTrackStorage.getAssessmentById(
+                assessmentId
+            );
+
+        if (!assessment) {
+            showNotFound();
+            return;
+        }
+
+        moduleElement.textContent =
+            assessment.module;
+
+        titleElement.textContent =
+            assessment.title;
+
+        statusBadge.textContent =
+            assessment.status;
+
+        statusBadge.className =
+            `status-badge ${getStatusClass(
+                assessment.status
+            )}`;
+
+        typeElement.textContent =
+            assessment.type;
+
+        dueDateElement.textContent =
+            formatDate(assessment.dueDate);
+
+        expectedMarkElement.textContent =
+            assessment.expectedMark === null ||
+            assessment.expectedMark === undefined
+                ? "Not specified"
+                : `${assessment.expectedMark}%`;
+
+        statusTextElement.textContent =
+            assessment.status;
+
+        notesElement.textContent =
+            assessment.notes ||
+            "No notes have been added.";
+
+        editLink.href =
+            `edit-assessment.html?id=${encodeURIComponent(
+                assessment.id
+            )}`;
+
+        loading.hidden = true;
+        notFound.hidden = true;
+        details.hidden = false;
+    }
+
+
+    function showNotFound() {
+        loading.hidden = true;
+        details.hidden = true;
+        notFound.hidden = false;
+    }
+
+
+    loadAssessment();
+});

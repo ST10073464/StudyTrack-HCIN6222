@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View assessment details in StudyTrack."
+    >
+
+    <title>Assessment Details | StudyTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar" aria-label="Main navigation">
+
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">🎓</div>
+                <span>StudyTrack</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="index.html" class="nav-link">
+                    <span aria-hidden="true">▦</span>
+                    Dashboard
+                </a>
+
+                <a
+                    href="assessments.html"
+                    class="nav-link active"
+                    aria-current="page"
+                >
+                    <span aria-hidden="true">▣</span>
+                    Assessments
+                </a>
+
+            </nav>
+
+            <div class="student-profile">
+
+                <div class="profile-icon" aria-hidden="true">
+                    ♙
+                </div>
+
+                <div>
+                    <strong>Student Profile</strong>
+                    <span>Academic Planner</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="mobile-header">
+
+                <div class="mobile-brand">
+                    <span aria-hidden="true">🎓</span>
+                    <strong>StudyTrack</strong>
+                </div>
+
+                <button
+                    id="menuToggle"
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                >
+                    ☰ Menu
+                </button>
+
+            </header>
+
+
+            <section class="page-header">
+
+                <a
+                    href="assessments.html"
+                    class="back-link"
+                >
+                    ← Back to Assessments
+                </a>
+
+                <p class="eyebrow">
+                    ASSESSMENT MANAGEMENT
+                </p>
+
+                <h1>Assessment Details</h1>
+
+                                <p class="page-description">
+                    Review the complete information for this
+                    assessment.
+                </p>
+
+            </section>
+
+
+            <!-- System Feedback -->
+            <div
+                id="systemMessage"
+                class="system-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+
+            <!-- Loading state -->
+
+
+            <!-- Loading state -->
+            <div
+                id="assessmentLoading"
+                class="detail-card"
+            >
+                <p>Loading assessment...</p>
+            </div>
+
+
+            <!-- Assessment not found -->
+            <section
+                id="assessmentNotFound"
+                class="empty-state"
+                hidden
+            >
+                <h2>Assessment not found</h2>
+
+                <p>
+                    The requested assessment could not be
+                    found. It may have been removed.
+                </p>
+
+                <a
+                    href="assessments.html"
+                    class="button button-primary"
+                >
+                    Return to Assessments
+                </a>
+            </section>
+
+
+            <!-- Assessment Details -->
+            <section
+                id="assessmentDetails"
+                class="detail-card"
+                hidden
+            >
+
+                <div class="detail-header">
+
+                    <div>
+                        <p
+                            id="detailModule"
+                            class="module-code"
+                        ></p>
+
+                        <h2 id="detailTitle"></h2>
+                    </div>
+
+                    <span
+                        id="detailStatus"
+                        class="status-badge"
+                    ></span>
+
+                </div>
+
+
+                <dl class="detail-grid">
+
+                    <div class="detail-item">
+                        <dt>Assessment Type</dt>
+                        <dd id="detailType"></dd>
+                    </div>
+
+                    <div class="detail-item">
+                        <dt>Due Date</dt>
+                        <dd id="detailDueDate"></dd>
+                    </div>
+
+                    <div class="detail-item">
+                        <dt>Expected Mark</dt>
+                        <dd id="detailExpectedMark"></dd>
+                    </div>
+
+                    <div class="detail-item">
+                        <dt>Status</dt>
+                        <dd id="detailStatusText"></dd>
+                    </div>
+
+                </dl>
+
+
+                <div class="detail-notes">
+
+                    <h3>Notes</h3>
+
+                    <p id="detailNotes"></p>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <a
+                        href="assessments.html"
+                        class="button button-secondary"
+                    >
+                        Back
+                    </a>
+
+                    <a
+                        id="editAssessmentLink"
+                        href="#"
+                        class="button button-primary"
+                    >
+                        Edit Assessment
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/view-assessment.js"></script>
+
+</body>
+</html>
