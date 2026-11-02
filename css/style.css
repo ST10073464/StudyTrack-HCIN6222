@@ -1,0 +1,721 @@
+/* =========================================================
+   StudyTrack
+   HCIN6222 Human Computer Interaction Prototype
+   Main desktop styles
+   ========================================================= */
+
+:root {
+    --primary: #1769aa;
+    --primary-dark: #0d4f86;
+    --primary-light: #eaf3fb;
+
+    --background: #f5f7f9;
+    --surface: #ffffff;
+    --surface-muted: #f8fafb;
+
+    --text-primary: #17212b;
+    --text-secondary: #647180;
+    --text-muted: #7d8995;
+
+    --border: #d9e0e6;
+    --border-strong: #c5ced7;
+
+    --success: #3f7f61;
+    --success-background: #eef8f2;
+
+    --warning: #8a6d1d;
+    --warning-background: #fff8df;
+
+    --danger: #b13a3a;
+    --danger-background: #fff1f1;
+
+    --sidebar-width: 220px;
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+    --radius-large: 14px;
+
+    --shadow-small: 0 2px 8px rgba(23, 33, 43, 0.06);
+}
+
+
+/* =========================================================
+   Reset
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text-primary);
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    outline-offset: 3px;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid #2d7fc1;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   Main Layout
+   ========================================================= */
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: var(--sidebar-width);
+    padding: 26px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+
+    z-index: 100;
+}
+
+.main-content {
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+    padding: 48px 56px 70px;
+}
+
+.main-content > section,
+.main-content > .system-message {
+    width: 100%;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   Brand
+   ========================================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 38px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-small);
+
+    background: var(--surface-muted);
+}
+
+
+/* =========================================================
+   Sidebar Navigation
+   ========================================================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 11px 13px;
+
+    color: #42505e;
+    text-decoration: none;
+
+    border-radius: var(--radius-small);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav-link:hover {
+    background: #f1f5f8;
+}
+
+.nav-link.active {
+    color: var(--primary-dark);
+    background: var(--primary-light);
+    border: 1px solid #c8dff1;
+}
+
+
+/* =========================================================
+   Student Profile
+   ========================================================= */
+
+.student-profile {
+    margin-top: auto;
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border-top: 1px solid var(--border);
+}
+
+.profile-icon {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    color: var(--text-secondary);
+}
+
+.student-profile strong,
+.student-profile span {
+    display: block;
+}
+
+.student-profile strong {
+    font-size: 12px;
+}
+
+.student-profile span {
+    margin-top: 2px;
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   Mobile Header
+   Hidden on desktop
+   ========================================================= */
+
+.mobile-header {
+    display: none;
+}
+
+
+/* =========================================================
+   Page Header
+   ========================================================= */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 5px;
+
+    color: var(--primary-dark);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.page-header h1 {
+    margin: 0;
+
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.page-description {
+    margin: 7px 0 0;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   System Messages
+   ========================================================= */
+
+.system-message {
+    margin-bottom: 24px;
+    padding: 13px 16px;
+
+    border: 1px solid #9bc5ad;
+    border-radius: var(--radius-small);
+
+    background: var(--success-background);
+    color: #245b42;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.system-message::before {
+    content: "✓";
+    margin-right: 9px;
+
+    display: inline-grid;
+    place-items: center;
+
+    width: 20px;
+    height: 20px;
+
+    border: 1px solid #6fa387;
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   Summary Cards
+   ========================================================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-bottom: 42px;
+}
+
+.summary-card {
+    min-height: 112px;
+    padding: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.summary-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+.summary-card strong {
+    display: block;
+
+    font-size: 27px;
+    font-weight: 650;
+    line-height: 1;
+}
+
+.summary-card span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   Workload Section
+   ========================================================= */
+
+.workload-section {
+    padding-bottom: 40px;
+}
+
+.section-heading {
+    margin-bottom: 18px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.button {
+    min-height: 40px;
+    padding: 9px 16px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-small);
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button-primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+}
+
+.button-secondary {
+    background: var(--surface);
+    color: var(--primary-dark);
+    border-color: #a9c8df;
+}
+
+.button-secondary:hover {
+    background: var(--primary-light);
+}
+
+.button-text {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    background: transparent;
+    color: #364553;
+}
+
+.button-text:hover {
+    background: #f0f4f7;
+}
+
+
+/* =========================================================
+   Search and Filters
+   ========================================================= */
+
+.filter-panel {
+    padding: 14px;
+
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 170px 170px;
+    gap: 12px;
+    align-items: end;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.search-field input,
+.filter-field select {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-small);
+
+    color: var(--text-primary);
+
+    font-size: 13px;
+}
+
+.search-field input::placeholder {
+    color: #8b97a2;
+}
+
+.search-field input:hover,
+.filter-field select:hover {
+    border-color: #aab7c2;
+}
+
+.search-field input:focus,
+.filter-field select:focus {
+    border-color: var(--primary);
+}
+
+.filter-field label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.result-count {
+    margin: 12px 0 14px;
+
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   Assessment List
+   ========================================================= */
+
+.assessment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.assessment-card {
+    padding: 18px 20px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: center;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-left: 3px solid #a9c9e1;
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.assessment-card:hover {
+    border-color: #bdc9d2;
+    border-left-color: var(--primary);
+}
+
+.assessment-meta {
+    min-width: 0;
+}
+
+.assessment-topline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 7px;
+}
+
+.module-code {
+    color: var(--primary-dark);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: #f4f6f8;
+
+    color: #52606d;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.status-badge.not-started {
+    background: #f4f6f8;
+}
+
+.status-badge.in-progress {
+    background: #eef5fb;
+    color: #315f82;
+    border-color: #c7ddec;
+}
+
+.status-badge.completed {
+    background: var(--success-background);
+    color: #34694f;
+    border-color: #b8d6c4;
+}
+
+.assessment-title {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.assessment-due {
+    margin: 7px 0 0;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+.assessment-due.due-soon {
+    color: var(--warning);
+    font-weight: 700;
+}
+
+.assessment-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+
+/* =========================================================
+   Empty State
+   ========================================================= */
+
+.empty-state {
+    padding: 48px 24px;
+
+    text-align: center;
+
+    background: var(--surface);
+
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-medium);
+}
+
+.empty-state h3 {
+    margin: 0 0 7px;
+    font-size: 18px;
+}
+
+.empty-state p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   Utility
+   ========================================================= */
+
+[hidden] {
+    display: none !important;
+}

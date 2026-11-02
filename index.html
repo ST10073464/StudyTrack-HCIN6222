@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="StudyTrack academic assessment management prototype."
+    >
+
+    <title>Dashboard | StudyTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" aria-label="Main navigation">
+
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">🎓</div>
+                <span>StudyTrack</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="index.html"
+                    class="nav-link active"
+                    aria-current="page"
+                >
+                    <span aria-hidden="true">▦</span>
+                    Dashboard
+                </a>
+
+                <a
+                    href="assessments.html"
+                    class="nav-link"
+                >
+                    <span aria-hidden="true">▣</span>
+                    Assessments
+                </a>
+
+            </nav>
+
+            <div class="student-profile">
+                <div class="profile-icon" aria-hidden="true">♙</div>
+
+                <div>
+                    <strong>Student Profile</strong>
+                    <span>Academic Planner</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+
+                <div class="mobile-brand">
+                    <span aria-hidden="true">🎓</span>
+                    <strong>StudyTrack</strong>
+                </div>
+
+                <button
+                    id="menuToggle"
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                >
+                    ☰ Menu
+                </button>
+
+            </header>
+
+
+            <!-- Dashboard Header -->
+            <section class="page-header">
+
+                <p class="eyebrow">STUDENT DASHBOARD</p>
+
+                <h1>Good morning</h1>
+
+                <p class="page-description">
+                    Here's what needs your attention.
+                </p>
+
+            </section>
+
+
+            <!-- System Feedback -->
+            <div
+                id="systemMessage"
+                class="system-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+
+            <!-- Summary Cards -->
+            <section
+                class="summary-grid"
+                aria-label="Assessment summary"
+            >
+
+                <article class="summary-card">
+
+                    <div
+                        class="summary-icon"
+                        aria-hidden="true"
+                    >
+                        📅
+                    </div>
+
+                    <div>
+                        <strong id="upcomingCount">0</strong>
+                        <span>Upcoming</span>
+                    </div>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div
+                        class="summary-icon"
+                        aria-hidden="true"
+                    >
+                        !
+                    </div>
+
+                    <div>
+                        <strong id="dueSoonCount">0</strong>
+                        <span>Due Soon</span>
+                    </div>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div
+                        class="summary-icon"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong id="completedCount">0</strong>
+                        <span>Completed</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- Workload -->
+            <section class="workload-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">YOUR WORKLOAD</p>
+                        <h2>Upcoming Assessments</h2>
+                    </div>
+
+                    <a
+                        href="add-assessment.html"
+                        class="button button-primary"
+                    >
+                        + Add Assessment
+                    </a>
+
+                </div>
+
+
+                <!-- Search and Filters -->
+                <div
+                    class="filter-panel"
+                    aria-label="Assessment filters"
+                >
+
+                    <div class="search-field">
+
+                        <label
+                            for="assessmentSearch"
+                            class="visually-hidden"
+                        >
+                            Search assessments
+                        </label>
+
+                        <input
+                            type="search"
+                            id="assessmentSearch"
+                            placeholder="Search assessments..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="filter-field">
+
+                        <label for="moduleFilter">
+                            Module
+                        </label>
+
+                        <select id="moduleFilter">
+                            <option value="all">
+                                All modules
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-field">
+
+                        <label for="statusFilter">
+                            Status
+                        </label>
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                All statuses
+                            </option>
+
+                            <option value="Not Started">
+                                Not Started
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    id="assessmentResultCount"
+                    class="result-count"
+                    aria-live="polite"
+                >
+                    Loading assessments...
+                </p>
+
+
+                <!-- Assessment cards inserted by JavaScript -->
+                <div
+                    id="assessmentList"
+                    class="assessment-list"
+                ></div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                    hidden
+                >
+
+                    <h3>No assessments found</h3>
+
+                    <p>
+                        Try changing your search or filter,
+                        or add a new assessment.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
