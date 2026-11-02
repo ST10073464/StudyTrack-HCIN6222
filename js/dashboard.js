@@ -6,6 +6,28 @@
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    const greeting =
+    document.getElementById("timeGreeting");
+
+    function updateGreeting() {
+        if (!greeting) {
+            return;
+        }
+
+        const currentHour = new Date().getHours();
+
+        if (currentHour < 12) {
+            greeting.textContent = "Good morning";
+        } else if (currentHour < 17) {
+            greeting.textContent = "Good afternoon";
+        } else {
+            greeting.textContent = "Good evening";
+        }
+    }
+
+    updateGreeting();
+
     const assessmentList = document.getElementById("assessmentList");
     const emptyState = document.getElementById("emptyState");
 
