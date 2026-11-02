@@ -1,0 +1,16 @@
+{
+  "name": "studytrack-hcin6222",
+  "version": "1.0.0",
+  "description": "StudyTrack responsive academic assessment management prototype for HCIN6222 Human Computer Interaction.",
+  "private": true,
+  "scripts": {
+    "lint": "eslint js",
+    "test": "npm run lint",
+    "ci": "npm run lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0"
+  }
+}
